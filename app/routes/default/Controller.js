@@ -8,7 +8,7 @@ export default class extends Controller {
     init() {
         super.init();
 
-        this.store.init('$page.lanes', [{}, {}]);
+        this.store.init('$page.lanes', [{}]);
 
         backCalc({
             type: 'getTopics',
