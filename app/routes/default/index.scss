@@ -1,0 +1,74 @@
+.b-report {
+  display: flex;
+  flex-direction: row;
+
+  .cxb-svg {
+    font-size: 12px;
+  }
+
+
+  .cxe-numericaxis-label {
+    font-size: 9px;
+    fill: gray;
+  }
+
+}
+
+.e-report-lane {
+  flex: 1;
+  max-width: 30rem;
+  min-width: 20rem;
+  padding: 2rem;
+  border-right: 2px solid lightgray;
+}
+
+.e-report-more {
+  padding: 2rem;
+}
+
+.e-report-percentages {
+  display: flex;
+  flex-direction: row;
+
+  & > div {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+.cxb-lookupfield.cxm-project {
+  width: 100%;
+  height: 30px;
+
+  .cxe-lookupfield-input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    box-shadow: none !important;
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  .cxb-dropdown {
+    border: 1px solid lightgray;
+  }
+}
+
+h3 {
+  font-weight: 100;
+  font-style: italic;
+}
+
+.e-report-features {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: -1em;
+  justify-content: center;
+}
+
+.e-report-feature {
+  text-align: center;
+  width: 5rem;
+  margin: 1rem;
+}
