@@ -50,10 +50,35 @@ namespace StateOfJSConvert
             for (var i = 0; i < answers.Count; i++)
                 answersMap.Add(answers[i].text, i);
 
-            var features = new List<String>() {
+            var features = new List<string>
+            {
                 "I don't know what that is", "Not needed", "Nice-to-have, but not important", "Major feature", "Vital feature"
             };
 
+            var experience = new List<string>
+            {
+                "Less than one year", "1-2 years", "2-5 years", "5-10 years", "10-20 years", "20+ years"
+            };
+
+            var companySize = new List<string>
+            {
+                "Just me", "1-5 people", "5-10 people", "10-20 people", "20-50 people", "50-100 people", "100-1000 people", "1000+ people"
+            };
+
+            var salary = new List<string>
+            {
+                "I work for free :(", "$0-$10k", "$10-$30k", "$30-50k", "$50-$100k", "$100k-$200k", "$200k+"
+            };
+
+            var editor = new List<string>
+            {
+                "Sublime Text", "Atom", "Webstorm", "Vim", "Emacs"
+            };
+
+            var spacetabs = new List<string>
+            {
+                "Spaces rule!", "Tabs for life!"
+            };
 
             var topics = new List<Topic>();
             var topicIndex = new Dictionary<int, int>();
