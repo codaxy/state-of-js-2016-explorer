@@ -1,3 +1,7 @@
+html {
+  overflow: auto;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont,
@@ -6,7 +10,12 @@ body {
   sans-serif;
 
   font-size: 14px;
-  overflow: auto;
+  display: table;
+  min-width: 100%;
+}
+
+* {
+  max-height: 999999px; //Android font boosting fix
 }
 
 @import "~cx-core/src/index";
