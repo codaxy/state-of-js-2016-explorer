@@ -61,7 +61,6 @@ export default class extends Controller {
         backCalc({type: 'getJSScores', projectId: id})
             .then(data => {
                 this.store.set('$lane.js.data', data);
-                console.log(data);
             })
     }
 }

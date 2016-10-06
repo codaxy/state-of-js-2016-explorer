@@ -12,13 +12,12 @@
   "license": "CCA",
   "homepage": "https://gitlab.com/codaxy/cx-getting-started#README",
   "dependencies": {
-    "cx-core": "^16.8.12",
+    "cx-core": "^16.10.0",
     "cx-react": "^16.8.2",
     "lodash": "^4.16.3",
     "promise-worker": "^1.1.1"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-cx": "^16.8.1",
@@ -28,12 +27,10 @@
     "babel-plugin-syntax-jsx": "^6.13.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-react-jsx": "^6.8.0",
-    "babel-plugin-transform-runtime": "^6.12.0",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
-    "bundle-loader": "^0.5.4",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^2.0.0-beta.2",
     "file-loader": "^0.9.0",

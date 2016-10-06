@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   overflow: auto; }
 
@@ -110,6 +110,7 @@ body {
   opacity: 0.5;
   transition: opacity 0.3s ease-in-out;
   background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
   position: fixed;
   bottom: 20px;
   right: 20px; }
@@ -589,7 +590,8 @@ body {
 
 .cxe-lookupfield-dropdown {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  height: 100%; }
 
 .cxe-lookupfield-message {
   font-size: smaller;
@@ -600,7 +602,8 @@ body {
     color: #9e2f2d; }
 
 .cxe-lookupfield-scroll-container {
-  overflow: auto; }
+  overflow: auto;
+  flex: 1; }
 
 .cxe-lookupfield-arrow {
   background-color: transparent;
@@ -1708,10 +1711,9 @@ body {
   margin: 5px;
   box-sizing: border-box;
   cursor: pointer; }
-  .cxe-legend-entry .cxb-legend.cxs-vertical {
-    display: block; }
   .cxb-legend.cxs-vertical .cxe-legend-entry {
-    display: block; }
+    display: block;
+    text-align: left; }
 
 .cxe-legend-svg {
   position: absolute;
