@@ -40,10 +40,10 @@ namespace StateOfJSConvert
             var answers = new List<Answer>
             {
                 new Answer { text = "I've never heard of it", used = false },
-                new Answer { text = "I've heard of it, and am not interested", interested =false, used = false },
-                new Answer { text = "I've used it before, and would not use it again", interested =true, used = true },
-                new Answer { text = "I've heard of it, and would like to learn it", interested =true, used = false },
-                new Answer { text = "I've used it before, and would use it again", interested =false, used = true },
+                new Answer { text = "I've heard of it, and am not interested", interested = false, used = false },
+                new Answer { text = "I've used it before, and would not use it again", interested = false, used = true },
+                new Answer { text = "I've heard of it, and would like to learn it", interested = true, used = false },
+                new Answer { text = "I've used it before, and would use it again", interested = true, used = true },
             };
 
             var answersMap = new Dictionary<string, int>();

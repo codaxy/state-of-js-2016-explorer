@@ -21,8 +21,8 @@ class Services {
     }
 
     static calculateAnswerPercentages({projectId}) {
-        var interested = _.countBy(entries, e=>(answers[e[projectId]] && answers[e[projectId]].interested) ? "yes" : "no");
-        var used = _.countBy(entries, e=>(answers[e[projectId]] && answers[e[projectId]].used) ? "yes" : "no");
+        var interested = _.countBy(entries, e=>(e[projectId]!=null && answers[e[projectId]].interested) ? "yes" : "no");
+        var used = _.countBy(entries, e=>(e[projectId]!=null && answers[e[projectId]].used) ? "yes" : "no");
         return {
             interested: (interested.yes || 0) / entries.length,
             used: (used.yes || 0) / entries.length
