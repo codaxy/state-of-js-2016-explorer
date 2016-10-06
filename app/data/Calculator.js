@@ -25,8 +25,6 @@ class Services {
     }
 
     static calculateAnswerPercentages({projectId}) {
-        var data = _.union(entries.map(e=>e[projectId]));
-        console.log(projectId, data);
         var interested = _.countBy(entries, e=>(e[projectId]!=null && answers[e[projectId]].interested) ? "yes" : "no");
         var used = _.countBy(entries, e=>(e[projectId]!=null && answers[e[projectId]].used) ? "yes" : "no");
         return {

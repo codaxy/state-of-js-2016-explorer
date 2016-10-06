@@ -35,8 +35,7 @@ export default <cx>
                             value:bind="$lane.id"
                             text:bind="$lane.name"
                             optionTextField="name"
-                            required
-                            autoFocus/>
+                            required />
                     </div>
 
                     <SectionStatus status:bind="$lane.answers.status">
@@ -73,7 +72,7 @@ export default <cx>
                                     dy="0.35em"
                                     ta="middle"/>
                             </Svg>
-                            <div>
+                            <div preserveWhitespace>
                                 of all participants already used <span text:bind="$lane.name"/>.
                             </div>
                         </div>
@@ -90,7 +89,7 @@ export default <cx>
                                     dy="0.35em"
                                     ta="middle"/>
                             </Svg>
-                            <div>
+                            <div preserveWhitespace>
                                 of all participants would use <span text:bind="$lane.name"/> again or would like learn
                                 it.
                             </div>
@@ -129,8 +128,7 @@ export default <cx>
                     </SectionStatus>
                     <SectionStatus status:bind="$lane.related.status">
 
-                        <p text:tpl="Top 10 things other than {$lane.name} that were also used before and want to use again:"/>
-
+                        <p text:tpl="Top 10 things that participants used before and want to use again, other than {$lane.name}:"/>
                         <Svg style="width:100%; height:300px;">
                             <Chart
                                 offset="20 -20 -40 10"
