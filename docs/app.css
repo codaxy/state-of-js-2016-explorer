@@ -2390,3 +2390,24 @@ h3 {
     text-decoration: none;
     font-weight: bold;
     color: black; }
+
+.cxb-sectionstatus.cxs-loading {
+  padding: 2rem;
+  font-style: italic;
+  color: lightgray;
+  border-bottom: 1px solid lightgray; }
+
+.cxb-sectionstatus.cxs-ok {
+  animation-name: appear;
+  animation-duration: 0.5s; }
+
+.cxb-sectionstatus.cxs-error {
+  padding: 2rem;
+  font-style: italic;
+  color: red; }
+
+@keyframes appear {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }

@@ -136,6 +136,8 @@ namespace StateOfJSConvert
             for (var i = 1; i < sheet.Data.Count; i++)
             {
                 var record = new JArray();
+                for (var t = 0; t < topics.Count; t++)
+                    record.Add(null);
 
                 foreach (var cell in sheet[i])
                 {
@@ -148,22 +150,20 @@ namespace StateOfJSConvert
                             var text = cell.Value.Value.ToString();
                             if (answersMap.TryGetValue(text, out index))
                             {
-                                record.Add(index);
+                                record[topicId] = index;
                                 topics[topicId].type = "project";
                             }
                             else if ((index = features.IndexOf(text)) != -1)
                             {
-                                record.Add(index);
+                                record[topicId] = index;
                                 topics[topicId].type = "feature";
                             }
                         }
                         else if (cell.Value.Value is double)
                         {
-                            record.Add((int)(double)cell.Value.Value);
+                            record[topicId] = (int)(double)cell.Value.Value;
                             topics[topicId].type = "question";
                         }
-                        else
-                            record.Add(null);
                     }
                 }
 
