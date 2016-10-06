@@ -1,0 +1,25 @@
+.cxb-sectionstatus {
+
+  &.cxs-loading {
+    padding: 2rem;
+    font-style: italic;
+    color: lightgray;
+    border-bottom: 1px solid lightgray;
+  }
+
+  &.cxs-ok {
+    animation-name: appear;
+    animation-duration: 0.5s;
+  }
+
+  &.cxs-error {
+    padding: 2rem;
+    font-style: italic;
+    color: red;
+  }
+}
+
+@keyframes appear {
+  from {opacity: 0;}
+  to {opacity: 1}
+}

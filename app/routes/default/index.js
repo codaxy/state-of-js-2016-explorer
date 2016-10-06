@@ -17,6 +17,7 @@ import {Column} from 'cx/ui/svg/charts/Column';
 import {Bar} from 'cx/ui/svg/charts/Bar';
 import {NumericAxis} from 'cx/ui/svg/charts/axis/NumericAxis';
 import {CategoryAxis} from 'cx/ui/svg/charts/axis/CategoryAxis';
+import {SectionStatus} from '../../components/SectionStatus';
 
 export default <cx>
     <div controller={Controller}>
@@ -37,7 +38,7 @@ export default <cx>
                             required
                             autoFocus/>
                     </div>
-                    <div>
+                    <SectionStatus status:bind="$lane.answers.status">
                         <Svg style="width:100%; height:200px;">
                             <Chart
                                 offset="20 -20 -40 10"
@@ -57,8 +58,8 @@ export default <cx>
                                 </Repeater>
                             </Chart>
                         </Svg>
-                    </div>
-                    <div class="e-report-percentages">
+                    </SectionStatus>
+                    <SectionStatus class="e-report-percentages" status:bind="$lane.percentages.status">
                         <div>
                             <Svg style="width:100px;height:100px;">
                                 <PieChart>
@@ -89,15 +90,15 @@ export default <cx>
                                     ta="middle"/>
                             </Svg>
                             <div>
-                                of all participants would use <span text:bind="$lane.name"/> again or would like learn it.
+                                of all participants would use <span text:bind="$lane.name"/> again or would like learn
+                                it.
                             </div>
                         </div>
-                    </div>
-                    <h3 text:tpl="Group of people who used {$lane.name} before and would like to use it again also said..."/>
+                    </SectionStatus>
+                    <SectionStatus status:bind="$lane.satisfaction.status">
+                        <h3 text:tpl="Participants who used {$lane.name} before and would like to use it again also said..."/>
+                        <p text:bind="$lane.satisfaction.data.question"/>
 
-                    <p text:bind="$lane.satisfaction.data.question"/>
-
-                    <div>
                         <Legend.Scope>
                             <Svg style="width:100%; height:20px;">
                                 <Chart
@@ -123,11 +124,12 @@ export default <cx>
                             </Svg>
                             <Legend />
                         </Legend.Scope>
-                    </div>
 
-                    <p text:tpl="Top 10 things other than {$lane.name} that were also used before and want to use again:"/>
+                    </SectionStatus>
+                    <SectionStatus status:bind="$lane.related.status">
 
-                    <div>
+                        <p text:tpl="Top 10 things other than {$lane.name} that were also used before and want to use again:"/>
+
                         <Svg style="width:100%; height:300px;">
                             <Chart
                                 offset="20 -20 -40 10"
@@ -147,44 +149,49 @@ export default <cx>
                                 </Repeater>
                             </Chart>
                         </Svg>
-                    </div>
+                    </SectionStatus>
+                    <SectionStatus status:bind="$lane.features.status">
+                        <p>Importance of features and tools.</p>
 
-                    <p>Importance of features and tools.</p>
+                        <Legend.Scope>
+                            <div class="e-report-features">
+                                <Repeater records:bind="$lane.features.data">
+                                    <div class="e-report-feature">
+                                        <Svg style="width:100%; height:100px;">
+                                            <Chart
+                                                axes={{
+                                                    y: {
+                                                        type: NumericAxis,
+                                                        snapToTicks: 0,
+                                                        vertical: true,
+                                                        hidden: true
+                                                    },
+                                                    x: {type: CategoryAxis, hidden: true}
+                                                }}
+                                            >
+                                                <Repeater records:bind="$record.scores">
+                                                    <Column
+                                                        colorIndex:expr="14 - {$index}"
+                                                        name:bind="$record.text"
+                                                        y:bind="$record.count"
+                                                        x:bind="$record.text"
+                                                    />
+                                                </Repeater>
+                                            </Chart>
+                                        </Svg>
+                                        <Text bind="$record.text"/>
+                                    </div>
+                                </Repeater>
+                            </div>
 
-                    <Legend.Scope>
-                        <div class="e-report-features">
-                            <Repeater records:bind="$lane.features.data">
-                                <div class="e-report-feature">
-                                    <Svg style="width:100%; height:100px;">
-                                        <Chart
-                                            axes={{
-                                                y: {type: NumericAxis, snapToTicks: 0, vertical: true, hidden: true},
-                                                x: {type: CategoryAxis, hidden: true}
-                                            }}
-                                        >
-                                            <Repeater records:bind="$record.scores">
-                                                <Column
-                                                    colorIndex:expr="14 - {$index}"
-                                                    name:bind="$record.text"
-                                                    y:bind="$record.count"
-                                                    x:bind="$record.text"
-                                                />
-                                            </Repeater>
-                                        </Chart>
-                                    </Svg>
-                                    <Text bind="$record.text"/>
-                                </div>
-                            </Repeater>
-                        </div>
+                            <Legend style="margin-top: 1rem; background: #fcfcfc"/>
+                        </Legend.Scope>
+                    </SectionStatus>
+                    <SectionStatus status:bind="$lane.js.status">
+                        <p>
+                            How much on a scale from 1 to 5 participants agree with the following statements:
+                        </p>
 
-                        <Legend style="margin-top: 1rem; background: #fcfcfc"/>
-                    </Legend.Scope>
-
-                    <p>
-                        See how much on a scale from 1 to 5 developers agree with the following statements:
-                    </p>
-
-                    <div>
                         <Svg style="width:100%; height:400px;">
                             <Chart
                                 offset="20 -20 -40 10"
@@ -205,8 +212,7 @@ export default <cx>
                                 </Repeater>
                             </Chart>
                         </Svg>
-                    </div>
-
+                    </SectionStatus>
                 </div>
             </Repeater>
             <div class="e-report-more">

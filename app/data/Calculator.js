@@ -6,6 +6,10 @@ const { answers, topics, categories, entries, features } = data;
 for (let i = 0; i<topics.length; i++)
     topics[i].id = i;
 
+// verification
+// var testTopic = topics.find(a=>a.name == 'Backbone');
+// console.log(entries.map(a=>a[testTopic.id]).findIndex(a=>a==5));
+
 class Services {
 
     static getTopics({filter}) {
@@ -21,6 +25,8 @@ class Services {
     }
 
     static calculateAnswerPercentages({projectId}) {
+        var data = _.union(entries.map(e=>e[projectId]));
+        console.log(projectId, data);
         var interested = _.countBy(entries, e=>(e[projectId]!=null && answers[e[projectId]].interested) ? "yes" : "no");
         var used = _.countBy(entries, e=>(e[projectId]!=null && answers[e[projectId]].used) ? "yes" : "no");
         return {

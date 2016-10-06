@@ -55,8 +55,8 @@ namespace StateOfJSConvert
             };
 
 
-            var categories = new List<Topic>();
-            var catIndex = new Dictionary<int, int>();
+            var topics = new List<Topic>();
+            var topicIndex = new Dictionary<int, int>();
 
             var catTriggers = new Dictionary<string, string>{
                 { "Good Old Plain JavaScript", "js" },
@@ -75,6 +75,13 @@ namespace StateOfJSConvert
 
             string category = null;
 
+            var skipColumns = new[] {
+                "#",
+                "Other",
+                "Start Date (UTC)",
+                "Submit Date (UTC)"
+            };
+
             foreach (var cell in sheet[0])
             {
                 var name = cell.Value.Value as string;
@@ -84,15 +91,15 @@ namespace StateOfJSConvert
                     if (catTriggers.TryGetValue(name, out ncat))
                         category = ncat;
 
-                    if (name == "#")
+                    if (skipColumns.Contains(name))
                         continue;
 
                     if (name.Contains("Other"))
                         continue;
 
-                    catIndex.Add(cell.Key, categories.Count);
+                    topicIndex.Add(cell.Key, topics.Count);
 
-                    categories.Add(new Topic
+                    topics.Add(new Topic
                     {
                         name = name,
                         category = category
@@ -107,8 +114,8 @@ namespace StateOfJSConvert
 
                 foreach (var cell in sheet[i])
                 {
-                    int ci;
-                    if (catIndex.TryGetValue(cell.Key, out ci))
+                    int topicId;
+                    if (topicIndex.TryGetValue(cell.Key, out topicId))
                     {
                         if (cell.Value.Value is string)
                         {
@@ -117,18 +124,18 @@ namespace StateOfJSConvert
                             if (answersMap.TryGetValue(text, out index))
                             {
                                 record.Add(index);
-                                categories[ci].type = "project";
+                                topics[topicId].type = "project";
                             }
                             else if ((index = features.IndexOf(text)) != -1)
                             {
                                 record.Add(index);
-                                categories[ci].type = "feature";
+                                topics[topicId].type = "feature";
                             }
                         }
                         else if (cell.Value.Value is double)
                         {
                             record.Add((int)(double)cell.Value.Value);
-                            categories[ci].type = "question";
+                            topics[topicId].type = "question";
                         }
                         else
                             record.Add(null);
@@ -138,7 +145,7 @@ namespace StateOfJSConvert
                 records.Add(record);
             }
 
-            result["topics"] = JToken.FromObject(categories);
+            result["topics"] = JToken.FromObject(topics);
             result["answers"] = JToken.FromObject(answers);
             result["features"] = JToken.FromObject(features);
             result["entries"] = records;

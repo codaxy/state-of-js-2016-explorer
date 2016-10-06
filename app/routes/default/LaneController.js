@@ -17,50 +17,58 @@ export default class extends Controller {
         }, true);
     }
 
-    countAnswers(id) {
-        this.store.set('$lane.answers.status', 'loading');
-        backCalc({type: 'countProjectEntriesByAnswer', projectId: id})
+    load(path, instructions) {
+        this.store.set(path + '.status', 'loading');
+        backCalc(instructions)
             .then(data=> {
-                this.store.set('$lane.answers.data', data);
-                this.store.set('$lane.answers.status', 'ok');
+                this.store.set(path + '.data', data);
+                this.store.set(path + '.status', 'ok');
             })
-            .catch(e=>{
-                this.store.set('$lane.answers.status', 'error');
+            .catch(e=> {
+                console.log(e);
+                this.store.set(path + '.status', 'error');
             });
     }
 
+    countAnswers(id) {
+        this.load('$lane.answers', {
+            type: 'countProjectEntriesByAnswer',
+            projectId: id
+        });
+    }
+
     calculatePercentages(id) {
-        backCalc({type: 'calculateAnswerPercentages', projectId: id})
-            .then(data => {
-                this.store.set('$lane.percentages.data', data);
-            })
+        this.load('$lane.percentages', {
+            type: 'calculateAnswerPercentages',
+            projectId: id
+        });
     }
 
     getSatisfaction(id) {
-        backCalc({type: 'getCategorySatisfactionForProject', projectId: id})
-            .then(data => {
-                this.store.set('$lane.satisfaction.data', data);
-            })
+        this.load('$lane.satisfaction', {
+            type: 'getCategorySatisfactionForProject',
+            projectId: id
+        });
     }
 
     getRelatedProjects(id) {
-        backCalc({type: 'getRelatedProjects', projectId: id})
-            .then(data => {
-                this.store.set('$lane.related.data', data);
-            })
+        this.load('$lane.related', {
+            type: 'getRelatedProjects',
+            projectId: id
+        });
     }
 
     getFeatureImportanceScores(id) {
-        backCalc({type: 'getFeatureImportanceScores', projectId: id})
-            .then(data => {
-                this.store.set('$lane.features.data', data);
-            })
+        this.load('$lane.features', {
+            type: 'getFeatureImportanceScores',
+            projectId: id
+        });
     }
 
     getJSScores(id) {
-        backCalc({type: 'getJSScores', projectId: id})
-            .then(data => {
-                this.store.set('$lane.js.data', data);
-            })
+        this.load('$lane.js', {
+            type: 'getJSScores',
+            projectId: id
+        });
     }
 }
