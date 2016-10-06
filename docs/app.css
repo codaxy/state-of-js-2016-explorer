@@ -2323,6 +2323,10 @@ body {
 .cxb-grid.cxs-selectable .cxe-grid-data {
   cursor: pointer; }
 
+.b-loading {
+  padding: 2rem;
+  font-size: 16px; }
+
 .b-report {
   display: flex;
   flex-direction: row; }

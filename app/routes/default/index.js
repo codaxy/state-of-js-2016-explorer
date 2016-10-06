@@ -20,13 +20,13 @@ import {CategoryAxis} from 'cx/ui/svg/charts/axis/CategoryAxis';
 
 export default <cx>
     <div controller={Controller}>
-        <div class="b-loading" visible:expr="!{$page.ready}">
-            Loading...
-        </div>
-        <div class="b-report" visible:expr="{$page.ready}">
+        <div class="b-report">
             <Repeater records:bind="$page.lanes" recordName="$lane">
                 <div class="e-report-lane" controller={LaneController}>
-                    <div>
+                    <div class="b-loading" visible:expr="!{$page.ready}">
+                        Loading...
+                    </div>
+                    <div visible:expr="{$page.ready}">
                         <LookupField
                             mod="project"
                             placeholder="Pick a project"
