@@ -13,6 +13,8 @@ export default class extends Controller {
                 this.getRelatedProjects(id);
                 this.getFeatureImportanceScores(id);
                 this.getJSScores(id);
+                this.getDevDetails(id);
+                this.getDevTabPreference(id);
             }
         }, true);
     }
@@ -68,6 +70,20 @@ export default class extends Controller {
     getJSScores(id) {
         this.load('$lane.js', {
             type: 'getJSScores',
+            projectId: id
+        });
+    }
+
+    getDevDetails(id) {
+        this.load('$lane.dev', {
+            type: 'getDevDetails',
+            projectId: id
+        });
+    }
+
+    getDevTabPreference(id) {
+        this.load('$lane.spacetabs', {
+            type: 'getDevTabPreference',
             projectId: id
         });
     }

@@ -38,6 +38,7 @@ export default <cx>
                             required
                             autoFocus/>
                     </div>
+
                     <SectionStatus status:bind="$lane.answers.status">
                         <Svg style="width:100%; height:200px;">
                             <Chart
@@ -212,7 +213,66 @@ export default <cx>
                                 </Repeater>
                             </Chart>
                         </Svg>
+                    </SectionStatus>   
+
+                    <SectionStatus status:bind="$lane.dev.status">
+                        <p>Developer profiles</p>
+                        <div class="e-report-devinfos">
+                            <Repeater records:bind="$lane.dev.data">
+                                <div class="e-report-devinfo">
+                                    <Svg style="width:100%; height:250px;">
+                                        <Chart
+                                            offset="20 -20 -40 10"
+                                            axes={{
+                                                x: {type: NumericAxis, snapToTicks: 0},
+                                                y: {type: CategoryAxis, vertical: true, hidden: true}
+                                            }}
+                                        >
+                                            <Repeater records:bind="$record.scores">
+                                                <Bar
+                                                    colorIndex:expr="13 - {$index}"
+                                                    x:bind="$record.count"
+                                                    y:bind="$record.text"
+                                                >
+                                                    <SvgText bind="$record.text" anchors="0.5 0 0.5 0" dy="0.35em" dx="0.5em"/>
+                                                </Bar>
+                                            </Repeater>
+                                        </Chart>                                        
+                                    </Svg>
+                                    <Text bind="$record.text"/>                                    
+                                </div>
+                            </Repeater>
+                        </div>
                     </SectionStatus>
+                    <br/>
+                    <SectionStatus status:bind="$lane.spacetabs.status" style="text-align: center">
+                        <Svg style="width:100%; height:40px;">
+                            <Chart
+                                axes={{
+                                    x: {type: NumericAxis, snapToTicks: 0, hidden: true},
+                                    y: {type: CategoryAxis, vertical: true, hidden: true}
+                                }}
+                            >
+                                <Repeater records:bind="$lane.spacetabs.data.scores">
+                                    <Bar
+                                        colorIndex:expr="8 * {$index} + 4"
+                                        x:bind="$record.share"
+                                        name:bind="$record.id"
+                                        style="stroke-width: 0"
+                                        y="sat"
+                                        stacked
+                                    >
+                                    </Bar>
+                                </Repeater>
+                                <SvgText expr="{$lane.spacetabs.data.scores}[0].text" dy="0.35em" dx="-0.5em"
+                                         anchors="0.5 1 0.5 1" textAnchor="end"/>
+                                <SvgText expr="{$lane.spacetabs.data.scores}[1].text" dy="0.35em" dx="0.5em"
+                                         anchors="0.5 1 0.5 0" textAnchor="start"/>
+                            </Chart>
+                        </Svg>
+                        <Text expr="{$lane.spacetabs.data.question}" />
+                    </SectionStatus>
+                    <br/>
                 </div>
             </Repeater>
             <div class="e-report-more">

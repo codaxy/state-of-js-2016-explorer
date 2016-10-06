@@ -64,7 +64,8 @@ h3 {
   font-style: italic;
 }
 
-.e-report-features {
+.e-report-features,
+.e-report-devinfos {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -75,5 +76,11 @@ h3 {
 .e-report-feature {
   text-align: center;
   width: 5rem;
-  margin: 1rem;
+  margin: 1em;
+}
+
+.e-report-devinfo {
+  text-align: center;
+  width: 15rem;
+  margin-bottom: 2rem;
 }

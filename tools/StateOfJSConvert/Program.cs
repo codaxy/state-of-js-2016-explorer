@@ -158,6 +158,31 @@ namespace StateOfJSConvert
                                 record[topicId] = index;
                                 topics[topicId].type = "feature";
                             }
+                            else if ((index = experience.IndexOf(text)) != -1)
+                            {
+                                record[topicId] = index;
+                                topics[topicId].type = "experience";
+                            }
+                            else if ((index = companySize.IndexOf(text)) != -1)
+                            {
+                                record[topicId] = index;
+                                topics[topicId].type = "company-size";
+                            }
+                            else if ((index = salary.IndexOf(text)) != -1)
+                            {
+                                record[topicId] = index;
+                                topics[topicId].type = "salary";
+                            }
+                            else if ((index = editor.IndexOf(text)) != -1)
+                            {
+                                record[topicId] = index;
+                                topics[topicId].type = "editor";
+                            }
+                            else if ((index = spacetabs.IndexOf(text)) != -1)
+                            {
+                                record[topicId] = index;
+                                topics[topicId].type = "spacetabs";
+                            }
                         }
                         else if (cell.Value.Value is double)
                         {
@@ -172,7 +197,14 @@ namespace StateOfJSConvert
 
             result["topics"] = JToken.FromObject(topics);
             result["answers"] = JToken.FromObject(answers);
+
             result["features"] = JToken.FromObject(features);
+            result["experience"] = JToken.FromObject(experience);
+            result["companySize"] = JToken.FromObject(companySize);
+            result["salary"] = JToken.FromObject(salary);
+            result["editor"] = JToken.FromObject(editor);
+            result["spacetabs"] = JToken.FromObject(spacetabs);
+
             result["entries"] = records;
 
             File.WriteAllText(@"..\..\..\..\app\data\data.js", "export default " + result.ToString(Formatting.Indented), Encoding.UTF8);

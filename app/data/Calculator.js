@@ -1,7 +1,7 @@
 import data from './data';
 import _ from 'lodash';
 
-const { answers, topics, categories, entries, features } = data;
+const { answers, topics, categories, entries, features, experience, companySize, salary, editor, spacetabs } = data;
 
 for (let i = 0; i<topics.length; i++)
     topics[i].id = i;
@@ -87,24 +87,21 @@ class Services {
                     records[p].score++;
         });
 
-        records = _.orderBy(records, 'score', 'desc');
         return records.slice(0, top);
     }
 
-    static getFeatureImportanceScores({projectId}) {
+    static getScoreSheet({projectId, answers, sort}) {
         let records = [];
         topics.forEach((t, i)=> {
-            if (t.type == 'feature')
+            if (answers[t.type])
                 records.push({
                     id: i,
                     text: t.name,
-                    scores: [
-                        {id: 1, count: 0, text: features[0]},
-                        {id: 2, count: 0, text: features[1]},
-                        {id: 3, count: 0, text: features[2]},
-                        {id: 4, count: 0, text: features[3]},
-                        {id: 5, count: 0, text: features[4]}
-                    ]
+                    scores: answers[t.type].map((a, i) => ({
+                        id: i+1,
+                        count: 0,
+                        text: a
+                    }))
                 });
         });
 
@@ -114,7 +111,20 @@ class Services {
                     records[p].scores[e[records[p].id]].count++;
         });
 
+        if (sort) {
+            records = _.orderBy(records, sort);
+        }
+
         return records;
+    }
+
+    static getFeatureImportanceScores({projectId}) {
+        return this.getScoreSheet({
+            projectId: projectId,
+            answers: { 
+                'feature': features 
+            }
+        });
     }
 
     static getJSScores({projectId}) {
@@ -147,6 +157,40 @@ class Services {
         });
 
         return records;
+    }
+
+    static getDevDetails({projectId}) {
+        return this.getScoreSheet({
+            projectId: projectId,
+            answers: { 
+                'experience': experience,
+                'company-size': companySize,
+                'salary': salary,
+                'editor': editor
+            }
+        });
+    }    
+
+    static getDevTabPreference({projectId}) {
+        var scoreSheet = this.getScoreSheet({
+            projectId: projectId,
+            answers: {
+                'spacetabs': spacetabs
+            }
+        });
+
+        var result = scoreSheet[0];
+        var scores = result.scores;
+
+        var total = _.sumBy(scores, 'count');
+        _.forEach(scores, (s) => {
+            s.share = s.count / total;
+        });
+
+        return {
+            question: result.text,
+            scores: scores
+        };
     }
 
     static processMessage(msg) {
