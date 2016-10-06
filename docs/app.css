@@ -4,7 +4,7 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   display: table;
   min-width: 100%; }
@@ -2349,6 +2349,9 @@ body {
   min-width: 20rem;
   padding: 2rem;
   border-right: 2px solid lightgray; }
+  @media screen and (max-device-width: 760px) {
+    .e-report-lane {
+      max-width: 20rem; } }
 
 .e-report-more {
   padding: 2rem; }

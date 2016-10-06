@@ -11,12 +11,10 @@
     font-size: 12px;
   }
 
-
   .cxe-numericaxis-label {
     font-size: 9px;
     fill: gray;
   }
-
 }
 
 .e-report-lane {
@@ -25,6 +23,10 @@
   min-width: 20rem;
   padding: 2rem;
   border-right: 2px solid lightgray;
+
+  @media screen and (max-device-width: 760px) {
+    max-width: 20rem;
+  }
 }
 
 .e-report-more {

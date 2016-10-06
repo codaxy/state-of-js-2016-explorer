@@ -1,4 +1,4 @@
-import CalculateWorker from "worker!./Calculator.js";
+import CalculateWorker from "worker?name=worker.js!./Calculator.js";
 import PromiseWorker from 'promise-worker';
 
 var calculator = new CalculateWorker();
