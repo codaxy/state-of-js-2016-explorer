@@ -8,7 +8,7 @@ for (let i = 0; i<topics.length; i++)
 
 // verification
 // var testTopic = topics.find(a=>a.name == 'Backbone');
-// console.log(entries.map(a=>a[testTopic.id]).findIndex(a=>a==5));
+// console.log(entries.map(a=>answers[a[testTopic.id]]));
 
 class Services {
 
