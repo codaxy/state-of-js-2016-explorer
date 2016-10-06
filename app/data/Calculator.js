@@ -85,10 +85,12 @@ class Services {
                     records[p].score++;
         });
 
+        records = _.orderBy(records, 'score', 'desc');
+
         return records.slice(0, top);
     }
 
-    static getScoreSheet({projectId, answers, sort}) {
+    static getScoreSheet({projectId, answers}) {
         let records = [];
         topics.forEach((t, i)=> {
             if (answers[t.type])
@@ -108,10 +110,6 @@ class Services {
                 if (e[records[p].id] != null)
                     records[p].scores[e[records[p].id]].count++;
         });
-
-        if (sort) {
-            records = _.orderBy(records, sort);
-        }
 
         return records;
     }

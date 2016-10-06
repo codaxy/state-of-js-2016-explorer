@@ -150,7 +150,7 @@ export default <cx>
                         </Svg>
                     </SectionStatus>
                     <SectionStatus status:bind="$lane.features.status">
-                        <p>Importance of features and tools.</p>
+                        <p>Importance of features and tools:</p>
 
                         <Legend.Scope>
                             <div class="e-report-features">
@@ -214,13 +214,13 @@ export default <cx>
                     </SectionStatus>   
 
                     <SectionStatus status:bind="$lane.dev.status">
-                        <p>Developer profiles</p>
+                        <p>Developer profiles:</p>
                         <div class="e-report-devinfos">
                             <Repeater records:bind="$lane.dev.data">
                                 <div class="e-report-devinfo">
                                     <Svg style="width:100%; height:250px;">
                                         <Chart
-                                            offset="20 -20 -40 10"
+                                            offset="20 -20 -20 10"
                                             axes={{
                                                 x: {type: NumericAxis, snapToTicks: 0},
                                                 y: {type: CategoryAxis, vertical: true, hidden: true}
@@ -253,7 +253,7 @@ export default <cx>
                             >
                                 <Repeater records:bind="$lane.spacetabs.data.scores">
                                     <Bar
-                                        colorIndex:expr="8 * {$index} + 4"
+                                        colorIndex:expr="10 - 5 * {$index}"
                                         x:bind="$record.share"
                                         name:bind="$record.id"
                                         style="stroke-width: 0"
