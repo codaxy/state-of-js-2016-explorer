@@ -10,7 +10,7 @@ export default class extends Controller {
         super.init();
 
         this.store.init('$page.ready', false);
-        this.store.init('$page.lanes', [{}]);
+        this.store.init('$page.lanes', [{}, {}]);
 
         backCalc({
             type: 'getTopics',
@@ -20,11 +20,11 @@ export default class extends Controller {
         }).then(data => {
             this.store.init('$page.projects', data);
             var lanes = this.store.get('$page.lanes');
-            if (lanes.length == 1 && lanes[0].id == null)
+            if (lanes.length == 2 && lanes[0].id == null)
                 this.store.set('$page.lanes', [{
                     id: 1,
                     name: 'ES6'
-                }]);
+                }, {}]);
             this.store.set('$page.ready', true);
         });
     }
