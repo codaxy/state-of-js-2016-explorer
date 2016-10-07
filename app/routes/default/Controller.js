@@ -9,7 +9,6 @@ export default class extends Controller {
     init() {
         super.init();
 
-        this.store.init('$page.lanes', [{}]);
         this.store.init('$page.ready', false);
 
         backCalc({
@@ -19,6 +18,10 @@ export default class extends Controller {
             }
         }).then(data => {
             this.store.init('$page.projects', data);
+            this.store.init('$page.lanes', [{
+                id: 1,
+                name: 'ES6'
+            }]);
             this.store.set('$page.ready', true);
         });
     }
