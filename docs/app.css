@@ -2402,8 +2402,7 @@ h3 {
 .b-credits {
   padding: 0.5rem;
   font-size: 16px;
-  background: #F0F4C3;
-  min-width: 35rem; }
+  background: #F0F4C3; }
   .b-credits a {
     text-decoration: none;
     font-weight: bold;
