@@ -93,7 +93,7 @@ export default <cx>
                                     ta="middle"/>
                             </Svg>
                             <div preserveWhitespace>
-                                of all participants would use <span text:bind="$lane.name"/> again or would like learn
+                                of all participants would use <span text:bind="$lane.name"/> again or would like to learn
                                 it.
                             </div>
                         </div>
