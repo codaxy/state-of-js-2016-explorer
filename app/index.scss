@@ -16,6 +16,10 @@ body {
 
 * {
   max-height: 999999px; //Android font boosting fix
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 @import "~cx-core/src/index";
