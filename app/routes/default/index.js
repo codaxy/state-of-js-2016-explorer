@@ -35,7 +35,10 @@ export default <cx>
                             value:bind="$lane.id"
                             text:bind="$lane.name"
                             optionTextField="name"
-                            required />
+                            required
+                            dropdownOptions={{
+                                positioning: 'auto'
+                            }} />
                     </div>
 
                     <SectionStatus status:bind="$lane.answers.status">

@@ -12,7 +12,7 @@
   "license": "CCA",
   "homepage": "https://gitlab.com/codaxy/cx-getting-started#README",
   "dependencies": {
-    "cx-core": "^16.10.1",
+    "cx-core": "^16.10.2",
     "cx-react": "^16.8.2",
     "lodash": "^4.16.3",
     "promise-worker": "^1.1.1"
