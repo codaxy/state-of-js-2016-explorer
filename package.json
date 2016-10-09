@@ -6,22 +6,21 @@
   "main": "app/index.js",
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js --open",
+    "precompute": "node tools/Calculator.js",
     "build": "webpack --config config/webpack.prod.js"
   },
   "author": "Marko Stijak",
-  "license": "CCA",
+  "license": "MIT",
   "homepage": "https://gitlab.com/codaxy/cx-getting-started#README",
   "dependencies": {
     "cx-core": "^16.10.2",
-    "cx-react": "^16.8.2",
-    "lodash": "^4.16.3",
-    "promise-worker": "^1.1.1"
+    "cx-react": "^16.8.2"
   },
   "devDependencies": {
+    "lodash": "^4.16.3",
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-cx": "^16.8.1",
-    "babel-plugin-lodash": "^3.2.9",
     "babel-plugin-react": "^1.0.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-syntax-jsx": "^6.13.0",

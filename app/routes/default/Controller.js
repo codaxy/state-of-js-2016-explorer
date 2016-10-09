@@ -1,5 +1,5 @@
 import {Controller} from 'cx/ui/Controller';
-import backCalc from '../../data/Worker';
+import data from '../../data/precomputed';
 import {append} from 'cx/data/ops/append';
 import {GlobalCacheIdentifier} from 'cx/util/GlobalCacheIdentifier'
 
@@ -9,24 +9,12 @@ export default class extends Controller {
     init() {
         super.init();
 
-        this.store.init('$page.ready', false);
-        this.store.init('$page.lanes', [{}, {}]);
+        this.store.init('$page.projects', data.map(p=>({id: p.id, name: p.name})));
 
-        backCalc({
-            type: 'getTopics',
-            filter: {
-                type: 'project'
-            }
-        }).then(data => {
-            this.store.init('$page.projects', data);
-            var lanes = this.store.get('$page.lanes');
-            if (lanes.length == 2 && lanes[0].id == null)
-                this.store.set('$page.lanes', [{
-                    id: 1,
-                    name: 'ES6'
-                }, {}]);
-            this.store.set('$page.ready', true);
-        });
+        this.store.init('$page.lanes', [{
+            id: 1,
+            name: 'ES6'
+        }, {}]);
     }
 
     addLane() {

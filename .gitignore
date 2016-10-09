@@ -6,3 +6,4 @@ node_modules
 .idea
 *.user
 packages
+tmp.js

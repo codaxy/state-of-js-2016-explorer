@@ -207,7 +207,7 @@ namespace StateOfJSConvert
 
             result["entries"] = records;
 
-            File.WriteAllText(@"..\..\..\..\app\data\data.js", "export default " + result.ToString(Formatting.Indented), Encoding.UTF8);
+            File.WriteAllText(@"..\..\..\tmp.js", "module.exports = " + result.ToString(Formatting.Indented), Encoding.UTF8);
         }
     }
 }
